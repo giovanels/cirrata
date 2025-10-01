@@ -7,7 +7,6 @@
 #include <Arduino.h>
 #include <LiquidCrystal_I2C.h>
 
-// ========== CONFIGURAÇÕES DE PINOS ==========
 #define RPM_PIN 14
 #define COMBUSTIVEL_PIN 4
 #define SENSOR_VELOCIDADE_PIN 23 
@@ -17,7 +16,6 @@ int thermoCLK = 18;
 int thermoCS  = 5;
 int thermoDO  = 19;
 
-// ========== VARIÁVEIS GLOBAIS ==========
 unsigned long data2send = 0;
 volatile unsigned long revolutions = 0;
 unsigned long rpm = 0;
@@ -34,7 +32,6 @@ MAX6675 thermocouple(thermoCLK, thermoCS, thermoDO);
 LiquidCrystal_I2C lcd(LCD_I2C_ADDRESS, 20, 4);
 LCDBigNumbers big_number(&lcd, BIG_NUMBERS_FONT_3_COLUMN_3_ROWS_VARIANT_1);
 
-// ========== SETUP ==========
 void setup() {
   Serial.begin(115200);
 
@@ -93,8 +90,6 @@ void loop() {
   Serial.printf("%#010x\n", data2send);
   delay(1000);
 }
-
-// ========== FUNÇÕES AUXILIARES ==========
 
 // --- RPM ---
 void rpmISR() {
